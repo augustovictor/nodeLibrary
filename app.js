@@ -16,7 +16,16 @@ app.get('/', function (req, res) {
 
     res.render('index', {
         title: 'Hello from render',
-        list: ['a', 'b']
+        nav: [
+            {
+                link: '/books',
+                text: 'Books'
+            },
+            {
+                link: '/authors',
+                text: 'Authors'
+            }
+        ]
     });
 });
 
