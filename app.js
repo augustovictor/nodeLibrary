@@ -6,13 +6,19 @@ var app = express();
 // Static files
 app.use(express.static('public'));
 app.set('views', './src/views');
-app.set('view engine', 'jade');
+
+// Templating engine
+app.set('view engine', '.hbs');
+
+var handlebars = require('express-handlebars');
+app.engine('hbs', handlebars({extname: '.hbs'}));
 
 // Routes
 app.get('/', function (req, res) {
     'use strict';
 
     res.render('index', {
+        title: 'Hello from render!',
         list: ['a', 'b']
     });
 });
