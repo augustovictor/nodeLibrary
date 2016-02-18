@@ -10,5 +10,6 @@
         Wiredep   : Inject automaticaly bower dependencies in app, 
         Nodemon   : that will monitor for any changes in your source and automatically restart your server,
         Jade      : Templating engine,
-        Handlebars: Templating engine,
+        Handlebars: Templating engine (Minimalist),
+        EJS       : Templating engine (Conflicts with Angular)
 </pre>

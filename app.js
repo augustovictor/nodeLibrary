@@ -8,17 +8,14 @@ app.use(express.static('public'));
 app.set('views', './src/views');
 
 // Templating engine
-app.set('view engine', '.hbs');
-
-var handlebars = require('express-handlebars');
-app.engine('hbs', handlebars({extname: '.hbs'}));
+app.set('view engine', 'ejs');
 
 // Routes
 app.get('/', function (req, res) {
     'use strict';
 
     res.render('index', {
-        title: 'Hello from render!',
+        title: 'Hello from render',
         list: ['a', 'b']
     });
 });
