@@ -52,31 +52,9 @@ app.use(express.static('public'));
 app.set('views', './src/views');
 
 // Router
-var bookRouter = express.Router();
+var bookRouter = require('./src/routes/bookRoutes');
 
-// Routes
-bookRouter.route('/')
-    .get(function (req, res) {
-        res.render('books', {
-            title: 'Hello from render',
-            nav: [
-                {
-                    link: '/books',
-                    text: 'Books'
-                },
-                {
-                    link: '/authors',
-                    text: 'Authors'
-                }
-            ],
-            books: books
-        });
-    });
 
-bookRouter.route('/single')
-    .get(function (req, res) {
-        res.send('Hello single book');
-    });
 
 app.use('/books', bookRouter);
 
