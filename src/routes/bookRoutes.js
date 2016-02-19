@@ -48,28 +48,28 @@ var books = [
     }
 ];
 
-// Routes
-bookRouter.route('/')
-    .get(function (req, res) {
-        res.render('books', {
-            title: 'Hello from render',
-            nav: [
-                {
-                    link: '/books',
-                    text: 'Books'
-                },
-                {
-                    link: '/authors',
-                    text: 'Authors'
-                }
-            ],
-            books: books
+var router = function (nav) {
+    // Routes
+    bookRouter.route('/')
+        .get(function (req, res) {
+            res.render('books', {
+                title: 'Hello from render',
+                nav: nav,
+                books: books
+            });
         });
-    });
 
-bookRouter.route('/single')
-    .get(function (req, res) {
-        res.send('Hello single book');
-    });
+    bookRouter.route('/:id') // Express will atach whatever is after '/' to the request
+        .get(function (req, res) {
+            var id = req.params.id;
+            res.render('book', {
+                title: 'Hello from render',
+                nav: nav,
+                book: books[id]
+            });
+        });
 
-module.exports = bookRouter;
+    return bookRouter;
+};
+
+module.exports = router; // app.js will execute this function and pass in nav
