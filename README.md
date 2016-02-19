@@ -12,4 +12,15 @@
         Jade      : Templating engine,
         Handlebars: Templating engine (Minimalist),
         EJS       : Templating engine (Conflicts with Angular)
+        
+        #########################################################
+        
+        Module 1 [ DONE ] - Just environment setup;
+        Module 2 [ DONE ] - Setting up express;
+        Module 3 [ DONE ] - Setting up gulp
+        Module 4 [ DONE ] - Templating engines;
+        Module 5 [ DONE ] - Routing;
+        Module 6 [ IN PROGRESS ] - Databases;
+        Module 7 [ TODO ] - Authentication;
+        Module 8 [ TODO ] - Structure and 3rd party apis;
 </pre>
