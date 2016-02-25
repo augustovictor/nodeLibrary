@@ -1,6 +1,6 @@
 var express = require('express');
-
 var app = express();
+var bodyParser = require('body-parser');
 
 var config = {
     user: 'root',
@@ -12,8 +12,15 @@ var config = {
     }
 };
 
-// Static files
+// Static files (Middlewares)
 app.use(express.static('public'));
+
+// A new body object containing the parsed data is populated on the request object after the middleware (i.e. req.body).
+app.use(bodyParser.json());
+
+// A new body object containing the parsed data is populated on the request object after the middleware (i.e. req.body). This object will contain key-value pairs, where the value can be a string or array (when extended is false), or any type (when extended is true).
+app.use(bodyParser.urlencoded());
+
 app.set('views', './src/views');
 
 // Navigation menu options
@@ -28,14 +35,16 @@ var nav = [
     }
 ];
 
-// Router
+// Routers
 var bookRouter = require('./src/routes/bookRoutes')(nav);
 var adminRouter = require('./src/routes/adminRoutes')(nav);
+var authRouter = require('./src/routes/authRoutes')(nav);
 
 
 
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
 
 // Templating engine
 app.set('view engine', 'ejs');

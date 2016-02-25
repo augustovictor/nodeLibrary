@@ -13,6 +13,7 @@
         Handlebars: Templating engine (Minimalist),
         EJS       : Templating engine (Conflicts with Angular),
         MongoDb   : Database,
+	BodyParser: Node.js body parsing middleware,
         
         #########################################################
         
