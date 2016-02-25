@@ -21,7 +21,7 @@
         Module 3 [ DONE ] - Setting up gulp
         Module 4 [ DONE ] - Templating engines;
         Module 5 [ DONE ] - Routing;
-        Module 6 [ IN PROGRESS ] - Databases;
-        Module 7 [ TODO ] - Authentication;
+        Module 6 [ DONE ] - Databases;
+        Module 7 [ IN PROGRESS ] - Authentication;
         Module 8 [ TODO ] - Structure and 3rd party apis;
 </pre>
