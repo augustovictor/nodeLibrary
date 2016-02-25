@@ -19,8 +19,8 @@ app.set('views', './src/views');
 // Navigation menu options
 var nav = [
     {
-        link: '/book',
-        text: 'Book'
+        link: '/books',
+        text: 'Books'
     },
     {
         link: '/author',
