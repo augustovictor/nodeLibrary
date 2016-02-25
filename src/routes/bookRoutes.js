@@ -4,8 +4,10 @@ var bookRouter = express.Router();
 
 var mongodb = require('mongodb').MongoClient;
 
+var ObjectId = require('mongodb').ObjectID;
 
 var router = function (nav) {
+    'use strict';
     // Routes
     bookRouter.route('/')
         .get(function (req, res) {
@@ -30,12 +32,29 @@ var router = function (nav) {
 
     bookRouter.route('/:id') // Express will atach whatever is after '/' to the request
         .get(function (req, res) {
-            var id = req.params.id;
-            res.render('book', {
-                title: 'Hello from render',
-                nav: nav,
-                book: books[id]
+            var id = new ObjectId(req.params.id);
+
+            var url = 'mongodb://localhost:27017/libraryApp';
+
+            mongodb.connect(url, function (err, db) {
+                var collection = db.collection('books');
+
+                collection.findOne({
+                    _id: id
+                }, function (err, resultSet) {
+                    if (!err) {
+
+                        res.render('book', {
+                            title: 'Book',
+                            nav: nav,
+                            book: resultSet
+                        });
+                    } else {
+                        res.send('An error occurred: ' + err);
+                    }
+                });
             });
+
         });
 
     return bookRouter;
