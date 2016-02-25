@@ -2,7 +2,15 @@ var express = require('express');
 
 var app = express();
 
-
+var config = {
+    user: 'root',
+    password: 'root',
+    server: 'localhost',
+    database: 'node_library',
+    options: {
+//        encrypt: true // Use this if you're on Windows Azure
+    }
+};
 
 // Static files
 app.use(express.static('public'));
@@ -22,10 +30,12 @@ var nav = [
 
 // Router
 var bookRouter = require('./src/routes/bookRoutes')(nav);
+var adminRouter = require('./src/routes/adminRoutes')(nav);
 
 
 
 app.use('/books', bookRouter);
+app.use('/admin', adminRouter);
 
 // Templating engine
 app.set('view engine', 'ejs');
