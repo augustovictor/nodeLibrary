@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var session = require('express-session');
+
+
 
 var config = {
     user: 'root',
@@ -23,6 +28,10 @@ app.use(bodyParser.urlencoded());
 
 app.set('views', './src/views');
 
+app.use(cookieParser());
+app.use(session({secret: 'library'}));
+require('./src/config/passport')(app);
+
 // Navigation menu options
 var nav = [
     {
@@ -41,10 +50,10 @@ var adminRouter = require('./src/routes/adminRoutes')(nav);
 var authRouter = require('./src/routes/authRoutes')(nav);
 
 
-
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
+
 
 // Templating engine
 app.set('view engine', 'ejs');
