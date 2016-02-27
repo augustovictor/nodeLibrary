@@ -4,14 +4,14 @@ var ObjectId = require('mongodb').ObjectID;
 
 var bookController = function (bookService, nav) {
     'use strict';
-    
+
     var middleware = function (req, res, next) {
-//        if (!req.user) { // If not logged in
-//            res.redirect('/');
-//        }
+        //        if (!req.user) { // If not logged in
+        //            res.redirect('/');
+        //        }
         next();
     };
-    
+
     var getList = function (req, res) {
         var url = 'mongodb://localhost:27017/libraryApp';
 
@@ -44,11 +44,13 @@ var bookController = function (bookService, nav) {
                 _id: id
             }, function (err, resultSet) {
                 if (!err) {
-
-                    res.render('book', {
-                        title: 'Book',
-                        nav: nav,
-                        book: resultSet
+                    bookService.getBookById(resultSet.bookId, function (err, book) {
+                        resultSet.book = book;
+                        res.render('book', {
+                            title: 'Book',
+                            nav: nav,
+                            book: resultSet
+                        });
                     });
                 } else {
                     res.send('An error occurred: ' + err);

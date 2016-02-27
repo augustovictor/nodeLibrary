@@ -6,7 +6,8 @@ var bookRouter = express.Router();
 var router = function (nav) {
     'use strict';
     
-    var bookController = require('../controllers/bookController.js')(null, nav);
+    var bookService = require('../services/goodreadService')();
+    var bookController = require('../controllers/bookController.js')(bookService, nav);
     
     // Routes
 
