@@ -18,7 +18,7 @@
         Express-session: Simple session middleware for Express,
         Passport: Simple, unobtrusive authentication for Node.js,
         Passport-local: Local username and password authentication strategy for Passport,
-        
+        Xml2js: Simple XML to JavaScript object converter,
         
         #########################################################
         
