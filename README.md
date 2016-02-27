@@ -14,10 +14,10 @@
         EJS       : Templating engine (Conflicts with Angular),
         MongoDb   : Database,
 	    BodyParser : Node.js body parsing middleware,
-        Cookie-parser : ,
-        Express-session: ,
-        Passport: ,
-        Passport-local: ,
+        Cookie-parser : Parse Cookie header and populate req.cookies with an object keyed by the cookie names,
+        Express-session: Simple session middleware for Express,
+        Passport: Simple, unobtrusive authentication for Node.js,
+        Passport-local: Local username and password authentication strategy for Passport,
         
         
         #########################################################
@@ -28,6 +28,6 @@
         Module 4 [ DONE ] - Templating engines;
         Module 5 [ DONE ] - Routing;
         Module 6 [ DONE ] - Databases;
-        Module 7 [ IN PROGRESS ] - Authentication;
-        Module 8 [ TODO ] - Structure and 3rd party apis;
+        Module 7 [ DONE ] - Authentication;
+        Module 8 [ IN PROGRESS ] - Structure and 3rd party apis;
 </pre>
