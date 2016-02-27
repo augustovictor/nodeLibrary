@@ -1,12 +1,13 @@
 var express = require('express');
 var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
+var passport = require('passport');
 
 var router = function () {
     'use strict';
     authRouter.route('/signup')
         .post(function (req, res) {
-            console.log(req.body);
+
             var url = 'mongodb://localhost:27017/libraryApp';
             mongodb.connect(url, function (err, db) {
                 var collection = db.collection('users'); // If we do not have a collection called 'users' mongodb will created
@@ -23,6 +24,15 @@ var router = function () {
             });
 
         });
+
+    authRouter.route('/signin')
+        .post(passport.authenticate('local', { // The name of the strategy: local.strategy.js
+                failureRedirect: '/',
+            }),
+            function (req, res) {
+                res.redirect('/auth/profile');
+            });
+
     authRouter.route('/profile')
         .get(function (req, res) {
             res.json(req.user);
