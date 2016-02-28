@@ -6,9 +6,9 @@ var bookController = function (bookService, nav) {
     'use strict';
 
     var middleware = function (req, res, next) {
-        //        if (!req.user) { // If not logged in
-        //            res.redirect('/');
-        //        }
+        if (!req.user) { // If not logged in
+            res.redirect('/');
+        }
         next();
     };
 
@@ -43,7 +43,7 @@ var bookController = function (bookService, nav) {
             collection.findOne({
                 _id: id
             }, function (err, resultSet) {
-                if (!err) {
+                if (resultSet.bookId) {
                     bookService.getBookById(resultSet.bookId, function (err, book) {
                         resultSet.book = book;
                         res.render('book', {
@@ -53,7 +53,11 @@ var bookController = function (bookService, nav) {
                         });
                     });
                 } else {
-                    res.send('An error occurred: ' + err);
+                    res.render('book', {
+                        title: 'Book',
+                        nav: nav,
+                        book: resultSet
+                    });
                 }
             });
         });

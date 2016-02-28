@@ -11,7 +11,7 @@ var goodreadService = function () {
 
         var options = {
             host: 'www.goodreads.com',
-            path: '/book/show/656?format=xml&key=Gy1rddKv6zIVxpLLuZblA'
+            path: '/book/show/' + id + '?format=xml&key=Gy1rddKv6zIVxpLLuZblA'
         };
 
         var callback = function (res) {
@@ -23,7 +23,7 @@ var goodreadService = function () {
 
             res.on('end', function () {
                 // When the function ends
-                console.log(str);
+//                console.log(str);
                 parser.parseString(str,
                     function (err, result) {
                         cb(null, result.GoodreadsResponse.book);
